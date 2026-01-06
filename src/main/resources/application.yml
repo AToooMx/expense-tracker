@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: expense-tracker
+  datasource:
+    url: ${dataSourceUrl}
+    username: ${dataSourceUsername}
+    password: ${dataSourcePassword}
+  flyway:
+    locations: classpath:db/migration
+    enable: true
+
+security:
+  jwt:
+    secret-key: ${jwtSecretKey}
+    expiration-time: 300000
