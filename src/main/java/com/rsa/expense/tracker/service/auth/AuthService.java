@@ -1,9 +1,6 @@
 package com.rsa.expense.tracker.service.auth;
 
-import com.rsa.expense.tracker.dto.UserDto;
-import com.rsa.expense.tracker.dto.UserLoginRequest;
-import com.rsa.expense.tracker.dto.UserLoginResponse;
-import com.rsa.expense.tracker.dto.UserRegistrationRequest;
+import com.rsa.expense.tracker.dto.*;
 
 public interface AuthService {
 
@@ -11,4 +8,7 @@ public interface AuthService {
 
     UserLoginResponse login(UserLoginRequest request);
 
+    RefreshTokenResponse refreshToken(RefreshTokenRequest request);
+
+    void logout(LogoutRequest request);
 }

@@ -1,5 +1,6 @@
-package com.rsa.expense.tracker.service.jwt;
+package com.rsa.expense.tracker.config.security;
 
+import com.rsa.expense.tracker.service.jwt.JwtService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
