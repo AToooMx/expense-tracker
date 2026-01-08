@@ -14,3 +14,13 @@ security:
     secret-key: ${jwtSecretKey}
     expiration-time: 300000
     refresh-expiration-time: 2592000000
+
+integration:
+  privatbank:
+    base-url: https://api.privatbank.ua/p24api
+
+scheduling:
+  job:
+    currency-exchange-cache:
+      cron: 0 0 * * * *
+      enable: true

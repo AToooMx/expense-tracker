@@ -9,6 +9,8 @@ import com.rsa.expense.tracker.model.Category;
 import com.rsa.expense.tracker.model.ExpenseType;
 import com.rsa.expense.tracker.model.User;
 import com.rsa.expense.tracker.service.transaction.TransactionService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
@@ -23,9 +25,11 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/transactions")
+@Tag(name = "Transactions")
 public class TransactionController {
     private final TransactionService transactionService;
 
+    @Operation(summary = "Create transaction")
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public TransactionDto createTransaction(@AuthenticationPrincipal User user,
@@ -33,12 +37,14 @@ public class TransactionController {
         return transactionService.create(user, request);
     }
 
+    @Operation(summary = "Find transaction by id")
     @GetMapping("/{transactionId}")
     public TransactionDto getTransaction(@AuthenticationPrincipal User user,
                                          @PathVariable Long transactionId) {
         return transactionService.getTransaction(user, transactionId);
     }
 
+    @Operation(summary = "Get page of transactions")
     @GetMapping
     public List<TransactionDto> getTransactions(@AuthenticationPrincipal User user,
                                                 @RequestParam(defaultValue = "0") int page,
@@ -60,12 +66,14 @@ public class TransactionController {
         return transactionService.getTransactions(search);
     }
 
+    @Operation(summary = "Delete transaction by id")
     @DeleteMapping("/{transactionId}")
     public void deleteTransaction(@AuthenticationPrincipal User user,
                                   @PathVariable Long transactionId) {
         transactionService.deleteTransaction(user, transactionId);
     }
 
+    @Operation(summary = "Update transaction by id")
     @PutMapping("/{transactionId}")
     public TransactionDto updateTransaction(@AuthenticationPrincipal User user,
                                             @PathVariable Long transactionId,
