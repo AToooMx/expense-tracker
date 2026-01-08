@@ -1,12 +1,17 @@
 package com.rsa.expense.tracker.service.transaction;
 
 import com.rsa.expense.tracker.dto.CreateTransactionRequest;
-import com.rsa.expense.tracker.dto.CreateTransactionResponse;
+import com.rsa.expense.tracker.dto.TransactionDto;
+import com.rsa.expense.tracker.dto.TransactionSearch;
 import com.rsa.expense.tracker.model.User;
-import jakarta.validation.Valid;
+
+import java.util.List;
 
 public interface TransactionService {
 
-    CreateTransactionResponse create(User user, CreateTransactionRequest request);
+    TransactionDto create(User user, CreateTransactionRequest request);
 
+    TransactionDto getTransaction(User user, Long transactionId);
+
+    List<TransactionDto> getTransactions(TransactionSearch search);
 }

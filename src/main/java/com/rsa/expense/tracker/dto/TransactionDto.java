@@ -12,7 +12,7 @@ import java.time.Instant;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CreateTransactionResponse {
+public class TransactionDto {
     private Long id;
     private Instant createdAt;
     private Instant updatedAt;
