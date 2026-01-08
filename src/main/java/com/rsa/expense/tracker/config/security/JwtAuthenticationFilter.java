@@ -20,7 +20,6 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
     private static final String BEARER_PREFIX = "Bearer ";
-    private final AuthenticationProvider authenticationProvider;
     private final JwtService jwtService;
     private final UserDetailsService userDetailsService;
 
@@ -37,6 +36,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 var user = userDetailsService.loadUserByUsername(claims.getSubject());
 
                 if (jwtService.isValidToken(bearerToken, user)) {
+
                     var authentication = new UsernamePasswordAuthenticationToken(
                             user.getUsername(), user.getPassword(), user.getAuthorities()
                     );
