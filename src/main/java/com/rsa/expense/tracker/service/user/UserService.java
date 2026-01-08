@@ -7,4 +7,5 @@ public interface UserService {
 
     User create(UserRegistrationRequest request);
 
+    User find(String username);
 }

@@ -37,7 +37,13 @@ public class UserServiceImpl implements UserService {
 
         return userRepository.save(user);
     }
-    
+
+    @Override
+    public User find(String username) {
+        return userRepository.findByUsername(username)
+                .orElseThrow(() -> new CustomException(Error.ENTITY_NOT_FOUND, "User with username=%s not found".formatted(username)));
+    }
+
     private boolean isUserExists(String username) {
         return userRepository.findByUsername(username).isPresent();
     }

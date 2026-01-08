@@ -1,16 +1,11 @@
 package com.rsa.expense.tracker.controller;
 
-import com.rsa.expense.tracker.dto.UserDto;
-import com.rsa.expense.tracker.dto.UserLoginRequest;
-import com.rsa.expense.tracker.dto.UserLoginResponse;
-import com.rsa.expense.tracker.dto.UserRegistrationRequest;
+import com.rsa.expense.tracker.dto.*;
 import com.rsa.expense.tracker.service.auth.AuthService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -19,6 +14,7 @@ public class AuthController {
     private final AuthService authService;
 
     @PostMapping("/register")
+    @ResponseStatus(HttpStatus.CREATED)
     public UserDto registration(@Valid @RequestBody UserRegistrationRequest request) {
         return authService.registration(request);
     }
@@ -26,6 +22,17 @@ public class AuthController {
     @PostMapping("/login")
     public UserLoginResponse login(@Valid @RequestBody UserLoginRequest request) {
         return authService.login(request);
+    }
+
+    @PostMapping("/refresh")
+    public RefreshTokenResponse refresh(@Valid @RequestBody RefreshTokenRequest request) {
+        return authService.refreshToken(request);
+    }
+
+    @PostMapping("/logout")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void logout(@Valid @RequestBody LogoutRequest request) {
+        authService.logout(request);
     }
 
 }

@@ -13,3 +13,4 @@ security:
   jwt:
     secret-key: ${jwtSecretKey}
     expiration-time: 300000
+    refresh-expiration-time: 2592000000

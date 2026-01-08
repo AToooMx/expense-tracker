@@ -7,7 +7,9 @@ public enum Error {
     BAD_REQUEST(400, "E001", "Bad request"),
     INTERNAL_SERVER_ERROR(500, "E002", "Internal server error"),
     CREATE_USER_ERROR(500, "E003", "Create user error"),
-    AUTHORIZATION_ERROR(401, "E004", "Authorization error");
+    AUTHORIZATION_ERROR(401, "E004", "Authorization error"),
+    ENTITY_NOT_FOUND(404, "E005", "Entity not found"),
+    EXPIRATION_RESFRESH_TOKEN_ERROR(403, "E006", "Refresh token is already expired");
 
     private final int status;
     private final String code;
