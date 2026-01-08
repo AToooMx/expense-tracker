@@ -4,6 +4,7 @@ import com.rsa.expense.tracker.config.security.IsUser;
 import com.rsa.expense.tracker.dto.CreateTransactionRequest;
 import com.rsa.expense.tracker.dto.TransactionDto;
 import com.rsa.expense.tracker.dto.TransactionSearch;
+import com.rsa.expense.tracker.dto.UpdateTransactionRequest;
 import com.rsa.expense.tracker.model.Category;
 import com.rsa.expense.tracker.model.ExpenseType;
 import com.rsa.expense.tracker.model.User;
@@ -64,4 +65,12 @@ public class TransactionController {
                                   @PathVariable Long transactionId) {
         transactionService.deleteTransaction(user, transactionId);
     }
+
+    @PutMapping("/{transactionId}")
+    public TransactionDto updateTransaction(@AuthenticationPrincipal User user,
+                                            @PathVariable Long transactionId,
+                                            @Valid @RequestBody UpdateTransactionRequest request) {
+        return transactionService.updateTransaction(user, transactionId, request);
+    }
+
 }

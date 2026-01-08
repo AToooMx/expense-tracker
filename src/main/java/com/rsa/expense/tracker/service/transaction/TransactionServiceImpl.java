@@ -3,6 +3,7 @@ package com.rsa.expense.tracker.service.transaction;
 import com.rsa.expense.tracker.dto.CreateTransactionRequest;
 import com.rsa.expense.tracker.dto.TransactionDto;
 import com.rsa.expense.tracker.dto.TransactionSearch;
+import com.rsa.expense.tracker.dto.UpdateTransactionRequest;
 import com.rsa.expense.tracker.exception.CustomException;
 import com.rsa.expense.tracker.exception.Error;
 import com.rsa.expense.tracker.mapper.TransactionMapper;
@@ -60,6 +61,13 @@ public class TransactionServiceImpl implements TransactionService {
         var transaction = findTransaction(transactionId, user.getId());
         transactionRepository.delete(transaction);
         log.info("Transaction has been deleted, id: {}", transactionId);
+    }
+
+    @Override
+    public TransactionDto updateTransaction(User user, Long transactionId, UpdateTransactionRequest request) {
+        var transaction = findTransaction(transactionId, user.getId());
+        transactionMapper.update(transaction, request);
+        return transactionMapper.toDto(transactionRepository.save(transaction));
     }
 
     private Transaction findTransaction(Long transactionId, Long userId) {
