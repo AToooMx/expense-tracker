@@ -9,6 +9,7 @@ import com.rsa.expense.tracker.model.Category;
 import com.rsa.expense.tracker.model.ExpenseType;
 import com.rsa.expense.tracker.model.User;
 import com.rsa.expense.tracker.service.transaction.TransactionService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
@@ -23,6 +24,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/transactions")
+@Tag(name = "transactions")
 public class TransactionController {
     private final TransactionService transactionService;
 

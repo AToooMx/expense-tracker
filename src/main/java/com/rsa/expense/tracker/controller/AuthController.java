@@ -2,6 +2,7 @@ package com.rsa.expense.tracker.controller;
 
 import com.rsa.expense.tracker.dto.*;
 import com.rsa.expense.tracker.service.auth.AuthService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/auth")
+@Tag(name = "Auth")
 public class AuthController {
     private final AuthService authService;
 

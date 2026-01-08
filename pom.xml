@@ -21,6 +21,7 @@
 		<java.version>25</java.version>
         <mapstruct.version>1.6.3</mapstruct.version>
         <jwt.version>0.11.5</jwt.version>
+        <swagger-documentation.version>3.0.0-M1</swagger-documentation.version>
 	</properties>
 
     <dependencies>
@@ -49,8 +50,9 @@
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-validation</artifactId>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>${swagger-documentation.version}</version>
         </dependency>
 		<dependency>
 			<groupId>org.flywaydb</groupId>
