@@ -14,4 +14,6 @@ public interface TransactionService {
     TransactionDto getTransaction(User user, Long transactionId);
 
     List<TransactionDto> getTransactions(TransactionSearch search);
+
+    void deleteTransaction(User user, Long transactionId);
 }

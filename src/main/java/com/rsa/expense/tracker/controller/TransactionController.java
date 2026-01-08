@@ -41,11 +41,11 @@ public class TransactionController {
     @GetMapping
     public List<TransactionDto> getTransactions(@AuthenticationPrincipal User user,
                                                 @RequestParam(defaultValue = "0") int page,
-                                                @RequestParam(defaultValue = "50")  int size,
-                                                @RequestParam(required = false)  LocalDate dateFrom,
-                                                @RequestParam(required = false)  LocalDate dateTo,
-                                                @RequestParam(required = false)  Category category,
-                                                @RequestParam(required = false)  ExpenseType type) {
+                                                @RequestParam(defaultValue = "50") int size,
+                                                @RequestParam(required = false) LocalDate dateFrom,
+                                                @RequestParam(required = false) LocalDate dateTo,
+                                                @RequestParam(required = false) Category category,
+                                                @RequestParam(required = false) ExpenseType type) {
 
         var search = TransactionSearch.builder()
                 .pageRequest(PageRequest.of(page, size))
@@ -59,5 +59,9 @@ public class TransactionController {
         return transactionService.getTransactions(search);
     }
 
-
+    @DeleteMapping("/{transactionId}")
+    public void deleteTransaction(@AuthenticationPrincipal User user,
+                                  @PathVariable Long transactionId) {
+        transactionService.deleteTransaction(user, transactionId);
+    }
 }
