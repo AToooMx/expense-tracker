@@ -22,5 +22,6 @@ public class CreateTransactionRequest {
     private ExpenseType type;
     @NotBlank(message = "description can't be blank")
     private String description;
+    @NotNull(message = "category can't be null")
     private Category category;
 }

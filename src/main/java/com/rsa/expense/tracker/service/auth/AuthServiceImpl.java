@@ -49,7 +49,7 @@ public class AuthServiceImpl implements AuthService {
                 .map(refreshToken -> {
                     if (refreshTokenService.isExpiredToken(refreshToken)) {
                         refreshTokenService.deleteToken(refreshToken);
-                        throw new CustomException(Error.EXPIRED_REFRESH_TOKEN, "RefreshToken is expired");
+                        throw new CustomException(Error.EXPIRATION_RESFRESH_TOKEN_ERROR, "RefreshToken is expired");
                     }
 
                     return RefreshTokenResponse.builder()

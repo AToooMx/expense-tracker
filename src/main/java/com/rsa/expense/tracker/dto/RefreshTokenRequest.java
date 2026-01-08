@@ -1,6 +1,6 @@
 package com.rsa.expense.tracker.dto;
 
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RefreshTokenRequest {
-    @NotNull(message = "refreshToken can't be null")
+    @NotBlank(message = "refreshToken can't be blank")
     private String refreshToken;
 }
